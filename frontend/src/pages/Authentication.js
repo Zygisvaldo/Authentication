@@ -1,5 +1,6 @@
 import { json, redirect } from "react-router-dom";
 import AuthForm from "../components/AuthForm";
+import { storeAuthToken } from "../util/auth";
 
 function AuthenticationPage() {
   return <AuthForm />;
@@ -53,6 +54,11 @@ export async function action({ request, params }) {
     );
   }
   // managing jwt token here
+  const resData = await response.json();
+  const token = resData.token;
+
+  //localStorage.setItem("token", token);
+  storeAuthToken(token); // from util auth.js
 
   return redirect("/");
 }
