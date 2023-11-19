@@ -16,14 +16,14 @@ import NewsletterPage, { action as newsletterAction } from "./pages/Newsletter";
 import Authentication, { action as authAction } from "./pages/Authentication";
 import { loader as eventsLoader } from "./loaders/eventsLoader";
 import { action as logoutAction } from "./pages/Logout";
-import { tokenLoader } from "./util/auth";
+import { checkAuthLoader, tokenLoader } from "./util/auth";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     errorElement: <ErrorPage />,
-    id: 'root',
+    id: "root",
     loader: tokenLoader, // to get jwt, whenever new navigation action occurs
     children: [
       { index: true, element: <HomePage /> },
@@ -51,6 +51,7 @@ const router = createBrowserRouter([
                 path: "edit",
                 element: <EditEventPage />,
                 action: manipulateEventAction,
+                loader: checkAuthLoader,
               },
             ],
           },
@@ -58,6 +59,7 @@ const router = createBrowserRouter([
             path: "new",
             element: <NewEventPage />,
             action: manipulateEventAction,
+            loader: checkAuthLoader,
           },
         ],
       },
