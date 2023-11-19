@@ -16,12 +16,15 @@ import NewsletterPage, { action as newsletterAction } from "./pages/Newsletter";
 import Authentication, { action as authAction } from "./pages/Authentication";
 import { loader as eventsLoader } from "./loaders/eventsLoader";
 import { action as logoutAction } from "./pages/Logout";
+import { tokenLoader } from "./util/auth";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     errorElement: <ErrorPage />,
+    id: 'root',
+    loader: tokenLoader, // to get jwt, whenever new navigation action occurs
     children: [
       { index: true, element: <HomePage /> },
       { path: "auth", element: <Authentication />, action: authAction },
