@@ -48,3 +48,15 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+video {
+  display: block;
+  margin: 0 auto;
+}
+
+#video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
