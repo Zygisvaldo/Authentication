@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Form, NavLink } from "react-router-dom";
 
 import classes from "./MainNavigation.module.css";
 import NewsletterSignup from "./NewsletterSignup";
@@ -48,6 +48,12 @@ function MainNavigation() {
             >
               Authentication
             </NavLink>
+          </li>
+          <li>
+            {/* to trigger action we can wrap elem with 'From'. simply navigating to '/logout' would not trigger the action */}
+            <Form action="/logout" method="post">
+              <button>Log out</button>
+            </Form>
           </li>
         </ul>
       </nav>
